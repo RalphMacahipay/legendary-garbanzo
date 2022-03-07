@@ -17,6 +17,9 @@ if(isset($_POST['d'])){
 <p>You have visited this page <?php echo $_SESSION['num_visits']; ?> times</p>
 <p><form method="POST"><button name="d">reset</button></form></p>
 <?php
+    if($_SESSION['num_visits'] == 5){
+        echo '<p>Thank you for visiting the page a lot.</p>';
+    }
     if($_SESSION['num_visits'] == 10 ){
         include 'congratulations.php';
     }
