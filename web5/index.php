@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
  if(isset($_SESSION['visitCount'])){
      if ($_SESSION['visitCount'] == 4){
         echo "<h1>Wow!</h1> You sure come to this page a lot</>";
@@ -24,9 +25,4 @@ session_start();
 
         
 ?>
-
-<h1>Hello</h1>
-<p>You have visited this page <?= $_SESSION['visitCount'] ?> times</p>
-<p><a href="?reset=true">Reset</a></p>
-<h1></h1>
 
