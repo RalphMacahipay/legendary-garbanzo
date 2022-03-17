@@ -1,26 +1,28 @@
 <?php
 session_start();
-if(isset($_SESSION['num_visits'])){
-    $_SESSION['num_visits'] = $_SESSION['num_visits']+1;
-} else {
-$_SESSION['num_visits'] = 1;
-}
-if(isset($_POST['d'])){
-   session_destroy();
-   header("Location:index.php");
-}
 
 
+ if(isset($_SESSION['visitCount'])){
+     if ($_SESSION['visitCount'] == 4){
+        echo "<h1>Wow!</h1> You sure come to this page a lot</>";
+        $_SESSION['visitCount']++;
+        
+
+     }elseif($_SESSION['visitCount'] == 9){
+        header("Location: congratulations.php");
+        echo "cool";
+      
+
+     }else 
+        $_SESSION['visitCount']++;
+
+
+    
+    
+ }
+ else
+    $_SESSION['visitCount'] = 1;
+
+        
 ?>
 
-<h1>Hello</h1>
-<p>You have visited this page <?php echo $_SESSION['num_visits']; ?> times</p>
-<p><form method="POST"><button name="d">reset</button></form></p>
-<?php
-    if($_SESSION['num_visits'] == 5){
-        echo '<p>Thank you for visiting the page a lot.</p>';
-    }
-    if($_SESSION['num_visits'] == 10 ){
-        include 'congratulations.php';
-    }
-?>
